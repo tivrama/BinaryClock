@@ -1,0 +1,27 @@
+{
+  "name": "binaryClock",
+  "version": "1.0.0",
+  "description": "Binary Clock",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "4.4.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tivrama/binaryClock"
+  },
+  "keywords": [
+    "Binary Clock"
+  ],
+  "author": "joel",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "method-override": "^2.3.6"
+  }
+}
