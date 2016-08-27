@@ -1,8 +1,7 @@
-// public/js/services/NerdService.js
+// public/js/services/TimeService.js
 angular.module('TimeService', []).factory('Time', ['$http', function($http) {
 
     return {
-        // call to get all nerds
         get : function() {
             return $http.get('/api/time');
         }

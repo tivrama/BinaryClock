@@ -1,2 +1,2 @@
 // public/js/app.js
-angular.module('sampleApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'TimerCtrl', 'PomodoroCtrl', 'StopCtrl', 'TimeService']);
+angular.module('binaryApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'TimerCtrl', 'PomodoroCtrl', 'StopCtrl', 'TimeService']);

@@ -1,4 +1,4 @@
-// public/js/controllers/NerdCtrl.js
+// public/js/controllers/TimerCtrl.js
 angular.module('TimerCtrl', []).controller('TimerController', function($scope) {
 
     $scope.tagline = 'This is a timer!';
