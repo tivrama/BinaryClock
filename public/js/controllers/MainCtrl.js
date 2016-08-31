@@ -4,29 +4,34 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, Tim
   $scope.time;
   $scope.parsedTime = {};
 
-	var dec2bin = function(dec){
-	    return (dec >>> 0).toString(2);
-	};
+	var tickTock = $interval(function() {
+		$scope.time++;
+		if ($scope.time >= 86400) {
+			$interval.cancel(tickTock);
+			startTime();
+		}
+		$scope.parsedTime = Time.secondsToTime($scope.time);
+		$scope.displayTime = Time.dec2bin($scope.parsedTime.hours) + ',' + Time.dec2bin($scope.parsedTime.minutes) + ',' + Time.dec2bin($scope.parsedTime.seconds);
+	}, 1000);
 
-  (function () {
+
+  var startTime = function () {
     Time.getTheTime(function() {
     }).then(function(res) {
+    	console.log(res.data.slice(10, 19))
     	// Change time to seconds (midnight being 000000);
-    	console.log(res.data.slice(10, 19).split(':').join(''))
     	var hours = res.data.slice(10, 13) * 60 * 60;
     	var minutes = res.data.slice(14, 16) * 60;
     	var seconds = res.data.slice(17, 19) * 1;
     	$scope.time = hours + minutes + seconds;
-
+    	// Display time in binary
     	$scope.parsedTime = Time.secondsToTime($scope.time);
-    	$scope.tagline = dec2bin($scope.parsedTime.hours) + ',' + dec2bin($scope.parsedTime.minutes) + ',' + dec2bin($scope.parsedTime.seconds);
+    	$scope.displayTime = Time.dec2bin($scope.parsedTime.hours) + ',' + Time.dec2bin($scope.parsedTime.minutes) + ',' + Time.dec2bin($scope.parsedTime.seconds);
 
-  		$interval(function() {
-  			$scope.time++;
-  			$scope.parsedTime = Time.secondsToTime($scope.time);
-  			$scope.tagline = dec2bin($scope.parsedTime.hours) + ',' + dec2bin($scope.parsedTime.minutes) + ',' + dec2bin($scope.parsedTime.seconds);
-  		}, 1000);
+  		tickTock;
     });
-  })();
+  };
+
+  startTime()
 
 });
