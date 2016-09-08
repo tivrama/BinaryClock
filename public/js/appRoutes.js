@@ -22,6 +22,11 @@
         .when('/stop', {
             templateUrl: 'views/stop.html',
             controller: 'StopController'
+        })
+
+        .when('/translator', {
+            templateUrl: 'views/translator.html',
+            controller: 'TranslatorController'
         });
 
     $locationProvider.html5Mode(true);
