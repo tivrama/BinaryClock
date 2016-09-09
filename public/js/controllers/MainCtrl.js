@@ -5,14 +5,19 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, Tim
   $scope.time;
   $scope.parsedTime = {};
 
+
+  var syncItUp = function() {
+    $scope.parsedTime = Time.secondsToTime($scope.time);
+    $scope.displayTime = Time.dec2bin($scope.parsedTime.hours) + ',' + Time.dec2bin($scope.parsedTime.minutes) + ',' + Time.dec2bin($scope.parsedTime.seconds);
+  };
+
 	var tickTock = $interval(function() {
 		$scope.time++;
 		if ($scope.time >= 86400) {
 			$interval.cancel(tickTock);
 			startTime();
 		}
-		$scope.parsedTime = Time.secondsToTime($scope.time);
-		$scope.displayTime = Time.dec2bin($scope.parsedTime.hours) + ',' + Time.dec2bin($scope.parsedTime.minutes) + ',' + Time.dec2bin($scope.parsedTime.seconds);
+    syncItUp();
 	}, 1000);
 
 
@@ -26,8 +31,7 @@ angular.module('MainCtrl', []).controller('MainController', function($scope, Tim
     	var seconds = res.data.slice(17, 19) * 1;
     	$scope.time = hours + minutes + seconds;
     	// Display time in binary
-    	$scope.parsedTime = Time.secondsToTime($scope.time);
-    	$scope.displayTime = Time.dec2bin($scope.parsedTime.hours) + ',' + Time.dec2bin($scope.parsedTime.minutes) + ',' + Time.dec2bin($scope.parsedTime.seconds);
+      syncItUp();
 
   		tickTock;
     });
