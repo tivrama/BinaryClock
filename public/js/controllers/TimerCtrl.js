@@ -36,6 +36,7 @@ angular.module('TimerCtrl', []).controller('TimerController', function($scope, T
 		tick = $interval(function() {
 			if ($scope.timer === 0) {
 				alert('Countdown is done!');
+				$scope.timerEntry = '';
 				return $scope.reset();
 			}
 			$scope.timer--;

@@ -2,17 +2,14 @@
 
 <div class="jumbotron text-center">
 
+  <h1>Translator</h1>
 
-    <h1>Translator</h1>
+  <input type="number" name="nTOb" ng-model="userEntry1" placeholder="Enter a number here">
+  <button ng-click="nTOb(userEntry1)" class="go">go</button>
+  <h4>{{ nTObResult }}</h4>
 
-    <input type="number" name="nTOb" ng-model="userEntry1" placeholder="Enter a number here">
-    <button ng-click="nTOb(userEntry1)" class="go">go</button>
-    <h4>{{ nTObResult }}</h4>
-
-    <input type="string" name="bTOn" ng-model="userEntry2" placeholder="Enter binary number">
-    <button ng-click="bTOn(userEntry2)" class="go">go</button>
-    <h4>{{ bTOnResult }}</h4>
-
-
+  <input type="string" name="bTOn" ng-model="userEntry2" placeholder="Enter binary number">
+  <button ng-click="bTOn(userEntry2)" class="go">go</button>
+  <h4>{{ bTOnResult }}</h4>
 
 </div>
