@@ -1,6 +1,13 @@
 // public/js/controllers/PomodoroCtrl.js
 angular.module('PomodoroCtrl', []).controller('PomodoroController', function($scope, Time, $interval) { 
 
+
+
+	// Add button/function to put on cycle of twenty-five minutes on (1) and five minutes off (0).
+
+	// Change alert - maybe add a sound
+
+
   $scope.pommer = 1500;
 	$scope.parsedPomTime = {};
 
