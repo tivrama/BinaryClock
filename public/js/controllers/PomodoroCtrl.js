@@ -21,6 +21,7 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
   syncItUp();
 
 	var tick;
+	var work = true;
 
 	$scope.start = function() {
 		syncItUp();
@@ -32,7 +33,13 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 		tick = $interval(function() {
 			if ($scope.pommer === 0) {
 				alert('Countdown is done!');
-				return $scope.reset();
+				if (work) {
+					work = false;
+					return $scope.fiveMinCycle()
+				} else {
+					work = true;
+					return $scope.twentyfiveMinCycle();
+				}
 			}
 			$scope.pommer--;
 			syncItUp();
@@ -40,12 +47,14 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 	};
 
 
-	var fiveMinCycle = function() {
+	$scope.fiveMinCycle = function() {
 		$scope.pommer = 300;
+		syncItUp();
 	};
 
-	var twentyfiveMinCycle = function() {
+	$scope.twentyfiveMinCycle = function() {
 		$scope.pommer = 1500;
+		syncItUp();
 	};	
 
 	$scope.stop = function() {
