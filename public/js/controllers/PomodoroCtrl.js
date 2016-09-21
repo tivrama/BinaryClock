@@ -8,7 +8,7 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 	// Change alert - maybe add a sound
 
 
-  $scope.pommer = 1500;
+  $scope.pommer = 1500; //1500 or 25 minutes
 	$scope.parsedPomTime = {};
 
   $scope.displayPom = $scope.pommer; 
@@ -34,13 +34,13 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 		tick = $interval(function() {
 			if ($scope.pommer === 0) {
 				if (work) {
-					alert('Time for a Break!');
 					audio.play();
+					alert('Time for a Break!');
 					work = false;
 					return $scope.fiveMinCycle()
 				} else {
-					alert('Now you must Work!');
 					audio.play();
+					alert('Now you must Work!');
 					work = true;
 					return $scope.twentyfiveMinCycle();
 				}
@@ -54,12 +54,12 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 
 
 	$scope.fiveMinCycle = function() {
-		$scope.pommer = 300;
+		$scope.pommer = 300; //300 or 5 minutes
 		syncItUp();
 	};
 
 	$scope.twentyfiveMinCycle = function() {
-		$scope.pommer = 1500;
+		$scope.pommer = 4; //1500 or 25 minutes
 		syncItUp();
 	};	
 
