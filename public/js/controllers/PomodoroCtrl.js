@@ -22,6 +22,7 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 
 	var tick;
 	var work = true;
+	var audio = new Audio('../../sounds/beep-07.mp3');
 
 	$scope.start = function() {
 		syncItUp();
@@ -32,11 +33,14 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 
 		tick = $interval(function() {
 			if ($scope.pommer === 0) {
-				alert('Countdown is done!');
 				if (work) {
+					alert('Time for a Break!');
+					audio.play();
 					work = false;
 					return $scope.fiveMinCycle()
 				} else {
+					alert('Now you must Work!');
+					audio.play();
 					work = true;
 					return $scope.twentyfiveMinCycle();
 				}
@@ -45,6 +49,8 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 			syncItUp();
 		}, 1000);
 	};
+
+
 
 
 	$scope.fiveMinCycle = function() {
