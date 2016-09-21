@@ -39,12 +39,21 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 		}, 1000);
 	};
 
+
+	var fiveMinCycle = function() {
+		$scope.pommer = 300;
+	};
+
+	var twentyfiveMinCycle = function() {
+		$scope.pommer = 1500;
+	};	
+
 	$scope.stop = function() {
 		if (angular.isDefined(tick)) {
 			$interval.cancel(tick);
 			tick = undefined;
 		}
-	}
+	};
 
 	$scope.reset = function() {
 		$scope.stop();
