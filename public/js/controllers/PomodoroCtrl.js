@@ -33,6 +33,7 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 		}
 
 		tick = $interval(function() {
+			event.preventDefault()
 			if ($scope.pommer === 0) {
 				if (work) {
 					audio2.play();
