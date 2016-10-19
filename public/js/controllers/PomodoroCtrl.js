@@ -30,13 +30,11 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 		tick = $interval(function() {
 			if ($scope.pommer === 0) {
 				if (work) {
-					audio2.play();
-					alert('Time for a Break!');
+					audio2.play().then(alert('Time for a Break!'));
 					work = false;
 					return $scope.fiveMinCycle()
 				} else {
-					audio1.play();
-					alert('Now you must Work!');
+					audio1.play().then(alert('Now you must Work!'));
 					work = true;
 					return $scope.twentyfiveMinCycle();
 				}
