@@ -17,8 +17,8 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 
 	var tick;
 	var work = true;
-	var audio1 = new Audio('../../sounds/pacman2.wav');
-	var audio2 = new Audio('../../sounds/pacman.wav');
+	$scope.audio1 = new Audio('../../sounds/pacman2.wav');
+	$scope.audio2 = new Audio('../../sounds/pacman.wav');
 
 	$scope.start = function() {
 		syncItUp();
@@ -30,11 +30,11 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 		tick = $interval(function() {
 			if ($scope.pommer === 0) {
 				if (work) {
-					audio2.play().then(alert('Time for a Break!'));
+					$scope.audio2.play().then(alert('Time for a Break!'));
 					work = false;
 					return $scope.fiveMinCycle()
 				} else {
-					audio1.play().then(alert('Now you must Work!'));
+					$scope.audio1.play().then(alert('Now you must Work!'));
 					work = true;
 					return $scope.twentyfiveMinCycle();
 				}
