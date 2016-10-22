@@ -3,7 +3,7 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 
 	// Add button/function to put on cycle of twenty-five minutes on (1) and five minutes off (0).
 
-  $scope.pommer = 10; //1500 or 25 minutes
+  $scope.pommer = 1500; //1500 or 25 minutes
 	$scope.parsedPomTime = {};
 
   $scope.displayPom = $scope.pommer; 
@@ -46,12 +46,12 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 
 
 	$scope.fiveMinCycle = function() {
-		$scope.pommer = 10; //300 or 5 minutes
+		$scope.pommer = 300; //300 or 5 minutes
 		syncItUp();
 	};
 
 	$scope.twentyfiveMinCycle = function() {
-		$scope.pommer = 10; //1500 or 25 minutes
+		$scope.pommer = 1500; //1500 or 25 minutes
 		syncItUp();
 	};	
 
