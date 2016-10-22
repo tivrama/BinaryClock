@@ -14,7 +14,6 @@ angular.module('TimerCtrl', []).controller('TimerController', function($scope, T
   syncItUp();
 
 	var tick;
-	var audio = new Audio('../../sounds/pacman.wav');
 
 	var parseUserInput = function() {
 	  var hours = $scope.timerEntry.slice(0, 2) * 60 * 60;
@@ -36,7 +35,7 @@ angular.module('TimerCtrl', []).controller('TimerController', function($scope, T
 
 		tick = $interval(function() {
 			if ($scope.timer === 0) {
-				audio.play();
+				document.getElementById('play').play();
 				alert('Countdown is done!');
 				$scope.timerEntry = '';
 				return $scope.reset();
