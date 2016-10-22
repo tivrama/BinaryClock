@@ -3,7 +3,7 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 
 	// Add button/function to put on cycle of twenty-five minutes on (1) and five minutes off (0).
 
-  $scope.pommer = 1500; //1500 or 25 minutes
+  $scope.pommer = 10; //1500 or 25 minutes
 	$scope.parsedPomTime = {};
 
   $scope.displayPom = $scope.pommer; 
@@ -17,8 +17,8 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 
 	var tick;
 	var work = true;
-	$scope.audio1 = new Audio('../../sounds/pacman2.wav');
-	$scope.audio2 = new Audio('../../sounds/pacman.wav');
+	// $scope.audio1 = new Audio('../../sounds/pacman2.wav');
+	// $scope.audio2 = new Audio('../../sounds/pacman.wav');
 
 	$scope.start = function() {
 		syncItUp();
@@ -30,11 +30,15 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 		tick = $interval(function() {
 			if ($scope.pommer === 0) {
 				if (work) {
-					$scope.audio2.play().then(alert('Time for a Break!'));
+					// $scope.audio2.play().then(alert('Time for a Break!'));
+					document.getElementById('play').play();
+					alert('Time for a Break!');
 					work = false;
 					return $scope.fiveMinCycle()
 				} else {
-					$scope.audio1.play().then(alert('Now you must Work!'));
+					// $scope.audio1.play().then(alert('Now you must Work!'));
+					document.getElementById('work').play();
+					alert('Now you must Work!');
 					work = true;
 					return $scope.twentyfiveMinCycle();
 				}
@@ -46,12 +50,12 @@ angular.module('PomodoroCtrl', []).controller('PomodoroController', function($sc
 
 
 	$scope.fiveMinCycle = function() {
-		$scope.pommer = 300; //300 or 5 minutes
+		$scope.pommer = 10; //300 or 5 minutes
 		syncItUp();
 	};
 
 	$scope.twentyfiveMinCycle = function() {
-		$scope.pommer = 1500; //1500 or 25 minutes
+		$scope.pommer = 10; //1500 or 25 minutes
 		syncItUp();
 	};	
 
